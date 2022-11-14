@@ -7,8 +7,19 @@
 #include <asf.h>
 #include "spi_slave.h"
 
+static struct spi_module module = {0};
+static uint8_t rx_data[32];
 
-static struct spi_module module;
+static void spi_on_recv_callback(struct spi_module *const module)
+{
+	while (!spi_is_ready_to_read(&module))
+		delay_cycles_ms(1);
+
+	spi_read_buffer_job(&module, rx_data, 32, 0);
+	
+	printf("%s\n\r", rx_data);
+}
+
 
 void spi_slave_hardware_init(void)
 {
@@ -34,4 +45,6 @@ void spi_slave_hardware_init(void)
 void spi_slave_init(void)
 {
 	spi_slave_hardware_init();
+	
+	spi_register_callback(&module, spi_on_recv_callback, SPI_CALLBACK_BUFFER_RECEIVED);
 }

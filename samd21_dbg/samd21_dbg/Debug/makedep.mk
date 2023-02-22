@@ -2,9 +2,41 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\usb_intf.c
+
+src\ASF\common\services\sleepmgr\samd\sleepmgr.c
+
+src\ASF\common\services\usb\class\vendor\device\udi_vendor.c
+
+src\ASF\common\services\usb\class\vendor\device\udi_vendor_desc.c
+
+src\ASF\common\services\usb\udc\udc.c
+
+src\ASF\sam0\drivers\extint\extint_callback.c
+
+src\ASF\sam0\drivers\extint\extint_sam_d_r_h\extint.c
+
+src\ASF\sam0\drivers\sercom\i2c\i2c_sam0\i2c_master.c
+
+src\ASF\sam0\drivers\sercom\i2c\i2c_sam0\i2c_master_interrupt.c
+
+src\ASF\sam0\drivers\tcc\tcc.c
+
+src\ASF\sam0\drivers\tcc\tcc_callback.c
+
+src\ASF\sam0\drivers\usb\stack_interface\usb_device_udd.c
+
+src\ASF\sam0\drivers\usb\stack_interface\usb_dual.c
+
+src\ASF\sam0\drivers\usb\usb_sam_d_r\usb.c
+
 src\console.c
 
-src\spi_slave.c
+src\gyro.c
+
+src\pwm_controller.c
+
+src\spi.c
 
 src\ASF\common2\services\delay\sam0\systick_counter.c
 

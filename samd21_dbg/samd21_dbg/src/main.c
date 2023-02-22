@@ -28,14 +28,24 @@
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
 #include <asf.h>
+#include <stdint.h>
 #include "console.h"
-#include "spi_slave.h"
+#include "usb_intf.h"
+#include "spi.h"
+
+uint8_t msg[] = "Hello World !\n\r";
 
 int main (void)
 {
 	system_init();
+	irq_initialize_vectors();
+	cpu_irq_enable();
+
 	console_init();
-	spi_slave_init();
+	spi_initialize(true);
+	spi_write_bytes(msg, sizeof(msg));
+//	pwm_controller_init();
 	/* Insert application code here, after the board has been initialized. */
+	init_usb_intf();
 	while(1);
 }

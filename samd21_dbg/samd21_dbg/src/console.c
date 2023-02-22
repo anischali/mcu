@@ -18,13 +18,13 @@ static struct usart_module module;
 	usart_get_config_defaults(&cfg);
 
 	cfg.baudrate = 115200;
-	cfg.pinmux_pad0 = PINMUX_UNUSED;
-	cfg.pinmux_pad1 = PINMUX_UNUSED;
-	cfg.pinmux_pad2 = PINMUX_PA10C_SERCOM0_PAD2;
-	cfg.pinmux_pad3 = PINMUX_PA11C_SERCOM0_PAD3;
-	cfg.mux_setting = USART_RX_3_TX_2_XCK_3;
+	cfg.pinmux_pad0 = PINMUX_PA22D_SERCOM5_PAD0;
+	cfg.pinmux_pad1 = PINMUX_PA23D_SERCOM5_PAD1;
+	cfg.pinmux_pad2 = PINMUX_UNUSED;
+	cfg.pinmux_pad3 = PINMUX_UNUSED;
+	cfg.mux_setting = USART_RX_1_TX_0_XCK_1;
 
-	stdio_serial_init(&module, SERCOM0, &cfg);
+	stdio_serial_init(&module, SERCOM5, &cfg);
 
 	usart_enable(&module);
  }
@@ -33,5 +33,5 @@ static struct usart_module module;
  void console_init(void)
  {
 	console_hardware_init();
-	printf("Hello world !!!\n\r");
+	printf("Serial console init !!!\n\r");
  }

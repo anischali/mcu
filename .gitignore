@@ -1,0 +1,4 @@
+samd21_dbg/.vs/**
+!samd21_dbg/samd21_dbg/Debug/Makefile
+!samd21_dbg/samd21_dbg/Debug/makedep.mk
+samd21_dbg/samd21_dbg/Debug/*

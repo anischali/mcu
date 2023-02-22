@@ -37,4 +37,7 @@
 #ifndef CONF_BOARD_H
 #define CONF_BOARD_H
 
+
+
+#define CONF_BOARD_USB_PORT 1
 #endif // CONF_BOARD_H

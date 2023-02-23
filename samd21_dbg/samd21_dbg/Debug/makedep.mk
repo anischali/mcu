@@ -32,7 +32,7 @@ src\ASF\sam0\drivers\usb\usb_sam_d_r\usb.c
 
 src\console.c
 
-src\gyro.c
+src\gyro_st_lsm6dsl.c
 
 src\pwm_controller.c
 

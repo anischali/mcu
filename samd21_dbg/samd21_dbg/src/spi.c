@@ -10,12 +10,12 @@
 static struct spi_module module = {0};
 static uint8_t rx_data[32];
 
-static void spi_on_recv_callback(struct spi_module *const module)
+static void spi_on_recv_callback(struct spi_module *const m)
 {
-	while (!spi_is_ready_to_read(&module))
+	while (!spi_is_ready_to_read(m))
 		delay_cycles_ms(1);
 
-	spi_read_buffer_job(&module, rx_data, 32, 0);
+	spi_read_buffer_job(m, rx_data, 32, 0);
 	
 	printf("%s\n\r", rx_data);
 }

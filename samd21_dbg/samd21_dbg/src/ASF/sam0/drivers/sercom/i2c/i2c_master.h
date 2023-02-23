@@ -545,6 +545,15 @@ void i2c_master_reset(struct i2c_master_module *const module);
 * @{
 */
 
+// Need to expose for ST_LSM6DSL.
+enum status_code i2c_master_write_packet(
+		struct i2c_master_module *const module,
+		struct i2c_master_packet *const packet);
+enum status_code i2c_master_read_packet(
+		struct i2c_master_module *const module,
+		struct i2c_master_packet *const packet);
+
+
 enum status_code i2c_master_read_packet_wait(
 		struct i2c_master_module *const module,
 		struct i2c_master_packet *const packet);

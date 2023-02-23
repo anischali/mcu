@@ -147,7 +147,4 @@
 // From module: USB Vendor Protocol
 #include <usb_protocol_vendor.h>
 
-#include <stdbool.h>
-#include <stdint.h>
-
 #endif // ASF_H

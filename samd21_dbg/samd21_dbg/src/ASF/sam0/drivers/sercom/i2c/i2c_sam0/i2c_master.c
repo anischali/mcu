@@ -597,6 +597,15 @@ static enum status_code _i2c_master_read_packet(
 	return tmp_status;
 }
 
+
+enum status_code i2c_master_read_packet(
+		struct i2c_master_module *const module,
+		struct i2c_master_packet *const packet)
+{
+	return _i2c_master_read_packet(module, packet);
+}
+
+
 /**
  * \brief Reads data packet from slave
  *
@@ -831,6 +840,13 @@ static enum status_code _i2c_master_write_packet(
 	}
 
 	return tmp_status;
+}
+
+enum status_code i2c_master_write_packet(
+		struct i2c_master_module *const module,
+		struct i2c_master_packet *const packet)
+{
+	return _i2c_master_write_packet(module, packet);
 }
 
 /**

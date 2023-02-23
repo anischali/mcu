@@ -1,7 +1,5 @@
 .vs/
 .atsuo
-*.o
-*.d
 *.vscode-ctags
 *.bin
 *.eep
@@ -13,8 +11,12 @@
 
 /__pycache__
 .vscode/
+[Rr]elease/*
+[Dd]ebug/*
 ![Dd]ebug/makedep.mk
 ![Dd]ebug/Makefile
 ![Rr]elease/makedep.mk
 ![Rr]elease/Makefile
 *.pyc
+*.o
+*.d

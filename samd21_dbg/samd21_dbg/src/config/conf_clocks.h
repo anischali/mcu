@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Clock configuration
+ * \brief SAM D21/R21/DA/HA Clock configuration
  *
  * Copyright (c) 2013-2018 Microchip Technology Inc. and its subsidiaries.
  *
@@ -39,7 +39,6 @@
 #  define CONF_CLOCKS_H_INCLUDED
 
 /* System clock bus configuration */
-#  define CONF_CLOCK_CPU_CLOCK_FAILURE_DETECT     false
 #  define CONF_CLOCK_FLASH_WAIT_STATES            0
 #  define CONF_CLOCK_CPU_DIVIDER                  SYSTEM_MAIN_CLOCK_DIV_1
 #  define CONF_CLOCK_APBA_DIVIDER                 SYSTEM_MAIN_CLOCK_DIV_1
@@ -54,7 +53,7 @@
 /* SYSTEM_CLOCK_SOURCE_XOSC configuration - External clock/oscillator */
 #  define CONF_CLOCK_XOSC_ENABLE                  true
 #  define CONF_CLOCK_XOSC_EXTERNAL_CRYSTAL        SYSTEM_CLOCK_EXTERNAL_CRYSTAL
-#  define CONF_CLOCK_XOSC_EXTERNAL_FREQUENCY      8000000UL
+#  define CONF_CLOCK_XOSC_EXTERNAL_FREQUENCY      12000000UL
 #  define CONF_CLOCK_XOSC_STARTUP_TIME            SYSTEM_XOSC_STARTUP_32768
 #  define CONF_CLOCK_XOSC_AUTO_GAIN_CONTROL       true
 #  define CONF_CLOCK_XOSC_ON_DEMAND               true
@@ -81,14 +80,14 @@
 /* SYSTEM_CLOCK_SOURCE_DFLL configuration - Digital Frequency Locked Loop */
 #  define CONF_CLOCK_DFLL_ENABLE                  true
 #  define CONF_CLOCK_DFLL_LOOP_MODE               SYSTEM_CLOCK_DFLL_LOOP_MODE_USB_RECOVERY
-#  define CONF_CLOCK_DFLL_ON_DEMAND               true
+#  define CONF_CLOCK_DFLL_ON_DEMAND               false
 
 /* DFLL open loop mode configuration */
 #  define CONF_CLOCK_DFLL_FINE_VALUE              (512)
 
 /* DFLL closed loop mode configuration */
 #  define CONF_CLOCK_DFLL_SOURCE_GCLK_GENERATOR   GCLK_GENERATOR_1
-#  define CONF_CLOCK_DFLL_MULTIPLY_FACTOR         (48000000 / 32768)
+#  define CONF_CLOCK_DFLL_MULTIPLY_FACTOR         1465 /* (48000000 / 32768) */
 #  define CONF_CLOCK_DFLL_QUICK_LOCK              true
 #  define CONF_CLOCK_DFLL_TRACK_AFTER_FINE_LOCK   true
 #  define CONF_CLOCK_DFLL_KEEP_LOCK_ON_WAKEUP     true

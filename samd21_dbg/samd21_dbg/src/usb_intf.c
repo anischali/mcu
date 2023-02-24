@@ -7,7 +7,6 @@
 
 #include <asf.h>
 #include "usb_intf.h"
-#include "conf_usb.h"
 
 
 static volatile bool usb_intf_b_vendor_enable = false;
@@ -33,7 +32,6 @@ void usb_intf_resume_action(void)
 
 void init_usb_intf(void)
 {
-	udc_start();
 	printf("usb: start...\n\r");
 }
 

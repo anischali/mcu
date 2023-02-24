@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief USB Vendor class protocol definitions.
+ * \brief Descriptors for an USB Composite Device MSC and HID mouse
  *
- * Copyright (c) 2014-2018 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2009-2018 Microchip Technology Inc. and its subsidiaries.
  *
  * \asf_license_start
  *
@@ -34,26 +34,7 @@
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
 
-#ifndef _USB_PROTOCOL_VENDOR_H_
-#define _USB_PROTOCOL_VENDOR_H_
+#ifndef _UDI_COMPOSITE_CONF_H_
+#define _UDI_COMPOSITE_CONF_H_
 
-/**
- * \ingroup usb_protocol_group
- * \defgroup usb_vendor_protocol USB Vendor Class definitions
- *
- * @{
- */
-
-/**
- * \name Vendor class values
- */
-//@{
-#define  VENDOR_CLASS                  0xFF
-#define  VENDOR_SUBCLASS               0xFF
-#define  VENDOR_PROTOCOL               0xFF
-//@}
-
-
-//@}
-
-#endif // _USB_PROTOCOL_VENDOR_H_
+#endif // _UDI_COMPOSITE_CONF_H_

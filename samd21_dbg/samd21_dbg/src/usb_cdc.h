@@ -6,8 +6,8 @@
  */ 
 
 
-#ifndef USB_INTF_H_
-#define USB_INTF_H_
+#ifndef USB_CDC_H_
+#define USB_CDC_H_
 #include <asf.h>
 
 

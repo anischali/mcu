@@ -47,5 +47,8 @@ int main (void)
 //	pwm_controller_init();
 	/* Insert application code here, after the board has been initialized. */
 	uint32_t freq = system_gclk_chan_get_hz(USB_GCLK_ID);
-	while(1);
+	
+	while(1)
+	{
+	}
 }

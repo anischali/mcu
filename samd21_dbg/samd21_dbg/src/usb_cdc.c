@@ -27,19 +27,6 @@ void usb_cdc_resume_action(void)
 	printf("usb: resuming...\n\r");
 }
 
-void vbus_event(uint8_t b_vbus_high) {
-	if (b_vbus_high)
-	{
-		// Connect USB device
-		udc_attach();
-	}
-	else
-	{
-		// Disconnect USB device
-		udc_detach();
-	}
-} 
-
 void init_usb_cdc(void)
 {
 	stdio_usb_init();
@@ -50,12 +37,14 @@ void init_usb_cdc(void)
 bool usb_cdc_enable(uint8_t port)
 {
 	uart_open(port);
+	stdio_usb_enable();
 	return true;
 }
 
 
 void usb_cdc_disable(uint8_t port)
 {
+	stdio_usb_disable();
 	uart_close(port);
 }
 

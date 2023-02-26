@@ -81,7 +81,7 @@ void uart_config(uint8_t port, usb_cdc_line_coding_t *cfg)
 	UNUSED(port);
 	/* Configure USART for unit test output */
 	usart_get_config_defaults(&usart_conf);
-	usart_conf.generator_source = GCLK_GENERATOR_3;
+	usart_conf.generator_source = GCLK_GENERATOR_0;
 
 	switch (cfg->bCharFormat) {
 	case CDC_STOP_BITS_2:

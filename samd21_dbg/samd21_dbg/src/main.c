@@ -40,9 +40,8 @@ int main (void)
 	system_init();
 	irq_initialize_vectors();
 	cpu_irq_enable();
-	//console_init();
+
 	init_usb_cdc();
-	//init_usb_intf();
 	spi_initialize(true);
 	spi_write_bytes(msg, sizeof(msg));
 //	pwm_controller_init();

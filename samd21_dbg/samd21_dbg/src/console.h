@@ -6,4 +6,8 @@
  */ 
 
 
- void console_init(void);
+ 
+ void uart_close(uint8_t port);
+ void uart_open(uint8_t port);
+ void uart_config(uint8_t port, usb_cdc_line_coding_t *cfg);
+ void uart_rx_notify(uint8_t port);

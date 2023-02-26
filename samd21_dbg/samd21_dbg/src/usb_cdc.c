@@ -43,48 +43,19 @@ void vbus_event(uint8_t b_vbus_high) {
 void init_usb_cdc(void)
 {
 	stdio_usb_init();
-	if (!udc_include_vbus_monitoring()) {
-		// VBUS monitoring is not available on this product
-		// thereby VBUS has to be considered as present
-		vbus_event (true);
-	} 
 	printf("usb: start...\n\r");
 }
 
 
 bool usb_cdc_enable(uint8_t port)
 {
-
+	uart_open(port);
 	return true;
 }
 
 
 void usb_cdc_disable(uint8_t port)
 {
+	uart_close(port);
 }
 
-void usb_cdc_rx_notify(uint8_t port)
-{
-
-}
-
-void usb_cdc_tx_empty_notify(uint8_t port)
-{
-
-}
-
-void usb_cdc_set_coding_ext(uint8_t port)
-{
-
-}
-
-void usb_cdc_set_dtr_ext(uint8_t port)
-{
-
-}
-
-
-void usb_cdc_set_rts_ext(uint8_t port)
-{
-
-}

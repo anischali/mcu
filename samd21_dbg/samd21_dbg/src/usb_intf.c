@@ -7,10 +7,20 @@
 
 #include <asf.h>
 #include "usb_intf.h"
-#include "conf_usb.h"
 
 
 static volatile bool usb_intf_b_vendor_enable = false;
+
+COMPILER_WORD_ALIGNED
+static uint8_t pipe[64];
+
+
+void usb_intf_bulk_out_received(udd_ep_status_t status,
+								iram_size_t nb_transfered,
+								udd_ep_id_t ep);
+void usb_intf_bulk_in_received(udd_ep_status_t status,
+								iram_size_t nb_transfered, 
+								udd_ep_id_t ep);
 
 void usb_intf_sof_action(void)
 {
@@ -41,9 +51,7 @@ void init_usb_intf(void)
 bool usb_intf_enable(void)
 {
 	usb_intf_b_vendor_enable = true;
-#if UDI_VENDOR_EPS_SIZE_BULK_HS
-
-#endif
+	usb_intf_bulk_in_received(UDD_EP_TRANSFER_OK, 0, 0);
 	return true;
 }
 
@@ -61,4 +69,57 @@ bool usb_intf_setup_out_received(void)
 bool usb_intf_setup_in_received(void)
 {
 	return true;
+}
+
+
+void terminate_transaction(udd_ep_status_t status,
+									iram_size_t nb_transfered, udd_ep_id_t ep)
+{
+	UNUSED(ep);
+	if (UDD_EP_TRANSFER_OK != status)
+	{
+		return; // Transfer aborted, then stop loopback
+	}
+
+//	if (nb_transfered % UDI_VENDOR_EPS_SIZE_BULK_FS == 0)
+			/*udi_vendor_bulk_in_run(NULL, 0, NULL)*/;
+		
+	memset(&pipe[0], 0x0, sizeof(pipe));
+	/*udi_vendor_bulk_out_run(
+			&pipe[0],
+			sizeof(pipe),
+			usb_intf_bulk_out_received);*/
+}
+
+void usb_intf_bulk_in_received(udd_ep_status_t status,
+								iram_size_t nb_transfered, 
+								udd_ep_id_t ep)
+{
+	UNUSED(nb_transfered);
+	UNUSED(ep);
+	if (UDD_EP_TRANSFER_OK != status)
+	{
+		return; // Transfer aborted, then stop loopback
+	}
+
+	/*udi_vendor_bulk_out_run(
+	pipe,
+	sizeof(pipe),
+	usb_intf_bulk_out_received);*/
+}
+
+
+void usb_intf_bulk_out_received(udd_ep_status_t status,
+									iram_size_t nb_transfered, 
+									udd_ep_id_t ep)
+{
+	long px_higher_priority_task_woken = 0;
+
+	UNUSED(ep);
+	if (UDD_EP_TRANSFER_OK != status)
+	{
+		return; // Transfer aborted, then stop loopback
+	}
+
+	terminate_transaction(UDD_EP_TRANSFER_OK, 0, 0);
 }

@@ -30,7 +30,7 @@
 #include <asf.h>
 #include <stdint.h>
 #include "console.h"
-#include "usb_intf.h"
+#include "usb_cdc.h"
 #include "spi.h"
 
 uint8_t msg[] = "Hello World !\n\r";
@@ -41,11 +41,14 @@ int main (void)
 	irq_initialize_vectors();
 	cpu_irq_enable();
 
-	console_init();
+	init_usb_cdc();
 	spi_initialize(true);
 	spi_write_bytes(msg, sizeof(msg));
 //	pwm_controller_init();
 	/* Insert application code here, after the board has been initialized. */
-	init_usb_intf();
-	while(1);
+	uint32_t freq = system_gclk_chan_get_hz(USB_GCLK_ID);
+	
+	while(1)
+	{
+	}
 }

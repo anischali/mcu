@@ -12,7 +12,7 @@
 static volatile bool usb_intf_b_vendor_enable = false;
 
 COMPILER_WORD_ALIGNED
-static uint8_t pipe[UDI_VENDOR_EPS_SIZE_BULK_FS];
+static uint8_t pipe[64];
 
 
 void usb_intf_bulk_out_received(udd_ep_status_t status,

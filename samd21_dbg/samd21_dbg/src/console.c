@@ -73,6 +73,9 @@ void uart_rx_notify(uint8_t port)
 		usart_enable_callback(&usart_module_edbg, USART_CALLBACK_BUFFER_TRANSMITTED);
 		tx_data = udi_cdc_getc();
 		usart_write_buffer_job(&usart_module_edbg, &tx_data, 1);
+		
+
+		printf("You just pushed %c\n\r", tx_data);
 	}
 }
 

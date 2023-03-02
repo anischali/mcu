@@ -11,6 +11,21 @@
 
 
 
+void vbus_event(uint8_t b_vbus_high) {
+	if (b_vbus_high)
+	{
+		// Connect USB device
+		udc_attach();
+	}
+	else
+	{
+		// Disconnect USB device
+		udc_detach();
+	}
+} 
+
+
+
 void usb_cdc_sof_action(void)
 {
 		return;
@@ -36,15 +51,15 @@ void init_usb_cdc(void)
 
 bool usb_cdc_enable(uint8_t port)
 {
-	uart_open(port);
 	stdio_usb_enable();
+	uart_open(port);
 	return true;
 }
 
 
 void usb_cdc_disable(uint8_t port)
 {
-	stdio_usb_disable();
 	uart_close(port);
+	stdio_usb_disable();
 }
 

@@ -14,6 +14,6 @@
 void init_usb_cdc(void);
 bool usb_cdc_enable(uint8_t port);
 void usb_cdc_disable(uint8_t port);
-
+void vbus_event(uint8_t b_vbus_high);
 
 #endif /* USB_INTF_H_ */

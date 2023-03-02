@@ -136,7 +136,7 @@
 //! Interface callback definition
 
 //! Interface callback definition
-#define UDC_VBUS_EVENT(b_vbus_high) 			true
+#define UDC_VBUS_EVENT(b_vbus_high) 			vbus_event(b_vbus_high);
 #define  UDI_CDC_ENABLE_EXT(port)				usb_cdc_enable(port)
 #define  UDI_CDC_DISABLE_EXT(port)				usb_cdc_disable(port)
 #define  UDI_CDC_RX_NOTIFY(port)				uart_rx_notify(port)

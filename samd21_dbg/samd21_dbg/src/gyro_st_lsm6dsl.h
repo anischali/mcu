@@ -39,13 +39,17 @@
 
 
 #define CTRL1_XL_POWERDOWN_MASK		(0x0F)
+#define CTRL1_XL_REG				0x10
 #define CTRL1_XL_SET_208HZ_MODE		(0xA0)
 #define CTRL6_XL_NORMAL_MODE		(0x10)
 
 #define CTRL2_G_POWERDOWN_MASK		(0x0F)
+#define CTRL2_G_MUST_SET_BIT		(0xFE)
+#define CTRL2_G_REG					0x11
 #define CTRL2_G_SET_208HZ_MODE		(0xA0)
 #define CTRL7_G_NORMAL_MODE			(0x80)
 
+#define WHO_AM_I_REG				0x0F 
 
 
 void gyro_st_lsm6dsl_init(void);

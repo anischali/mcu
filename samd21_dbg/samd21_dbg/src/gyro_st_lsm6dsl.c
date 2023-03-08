@@ -94,7 +94,17 @@ static void gyro_st_lsm6dsl_hardware_init(void)
 
 static void gyro_st_lsm6dsl_setup(void)
 {
+	uint8_t val = 0;
 	
+	val = gyro_st_lsm6dsl_read_addr(CTRL1_XL_REG);
+	val &= CTRL1_XL_POWERDOWN_MASK;
+	val |= CTRL1_XL_SET_208HZ_MODE;
+	gyro_st_lsm6dsl_write_byte(CTRL1_XL_REG, val);
+	
+	val = gyro_st_lsm6dsl_read_addr(CTRL2_G_REG);
+	val &= CTRL2_G_POWERDOWN_MASK & CTRL2_G_MUST_SET_BIT;
+	val |= CTRL1_XL_SET_208HZ_MODE;
+	gyro_st_lsm6dsl_write_byte(CTRL2_G_REG, val);	
 }
 
 
@@ -146,4 +156,7 @@ void gyro_st_lsm6dsl_init(void)
 	gyro_st_lsm6dsl_hardware_init();
 	gyro_st_lsm6dsl_setup();
 	gyro_st_lsm6dsl_interrupts_init();
+	
+	uint8_t val = gyro_st_lsm6dsl_read_addr(WHO_AM_I_REG);
+	while (val != 0x6A);
 }

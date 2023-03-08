@@ -32,6 +32,7 @@
 #include "console.h"
 #include "usb_cdc.h"
 #include "spi.h"
+#include "gyro_st_lsm6dsl.h"
 
 uint8_t msg[] = "Hello World !\n\r";
 
@@ -47,7 +48,7 @@ int main (void)
 //	pwm_controller_init();
 	/* Insert application code here, after the board has been initialized. */
 	uint32_t freq = system_gclk_chan_get_hz(USB_GCLK_ID);
-	
+	gyro_st_lsm6dsl_init();
 	while(1)
 	{
 	}

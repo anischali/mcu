@@ -10,6 +10,14 @@
 #define GYRO_ST_LSM6DSL_H_
 #include <asf.h>
 
+struct data_t
+{
+	uint16_t x;
+	uint16_t y;
+	uint16_t z;	
+};
+
+
 #define GYRO_LSM6DSL_ADDRESS 0x6A
 
 #ifndef PIN_PB09A_EIC_EXTINT_NUM
@@ -38,16 +46,45 @@
 	(p)->data_length = length;
 
 
-#define CTRL1_XL_POWERDOWN_MASK		(0x0F)
+#define CTRL1_XL_POWERDOWN_MASK		0x0F
 #define CTRL1_XL_REG				0x10
-#define CTRL1_XL_SET_208HZ_MODE		(0xA0)
-#define CTRL6_XL_NORMAL_MODE		(0x10)
+#define CTRL1_XL_SET_208HZ_MODE		0x50
+#define CTRL6_C_REG					0x15
+#define CTRL6_C_NORMAL_MODE			0x10
+#define CTRL6_C_MUST_SET_BIT		0xFB
 
-#define CTRL2_G_POWERDOWN_MASK		(0x0F)
-#define CTRL2_G_MUST_SET_BIT		(0xFE)
+#define CTRL2_G_POWERDOWN_MASK		0x0F
+#define CTRL2_G_MUST_SET_BIT		0xFE
 #define CTRL2_G_REG					0x11
-#define CTRL2_G_SET_208HZ_MODE		(0xA0)
-#define CTRL7_G_NORMAL_MODE			(0x80)
+#define CTRL7_G_REG					0x16
+#define CTRL2_G_SET_208HZ_MODE		0x50
+#define CTRL7_G_NORMAL_MODE			0x80
+#define CTRL7_G_MUST_SET_BIT		0xF4
+
+#define CTRL3_C_REG					0x12
+#define CTRL3_C_BDU_ACTIVE_LOW		0x64
+
+#define INT2_CTRL_REG				0x0E
+#define INT2_ON_GYRO_RDY			0x02
+
+#define INT1_CTRL_REG				0x0D
+#define INT1_ON_XL_RDY				0x01
+
+
+#define OUTX_L_G_REG				0x22
+#define OUTX_H_G_REG				0x23
+#define OUTY_L_G_REG				0x24
+#define OUTY_H_G_REG				0x25
+#define OUTZ_L_G_REG				0x26
+#define OUTZ_H_G_REG				0x27
+
+
+#define OUTX_L_XL_REG				0x28
+#define OUTX_H_XL_REG				0x29
+#define OUTY_L_XL_REG				0x2A
+#define OUTY_H_XL_REG				0x2B
+#define OUTZ_L_XL_REG				0x2C
+#define OUTZ_H_XL_REG				0x2D
 
 #define WHO_AM_I_REG				0x0F 
 

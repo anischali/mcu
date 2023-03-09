@@ -52,14 +52,14 @@ void init_usb_cdc(void)
 bool usb_cdc_enable(uint8_t port)
 {
 	stdio_usb_enable();
-	uart_open(port);
+	//uart_open(port);
 	return true;
 }
 
 
 void usb_cdc_disable(uint8_t port)
 {
-	uart_close(port);
+	//uart_close(port);
 	stdio_usb_disable();
 }
 

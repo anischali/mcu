@@ -97,7 +97,8 @@ static void gyro_st_lsm6dsl_setup(void)
 	uint8_t val = 0;
 	// Power up the GYRO and set to 208 Hz.
 	val = gyro_st_lsm6dsl_read_addr(CTRL2_G_REG);
-	val &= CTRL2_G_POWERDOWN_MASK & CTRL2_G_MUST_SET_BIT;
+	val &= CTRL2_G_POWERDOWN_MASK;
+	val &= CTRL2_G_MUST_SET_BIT;
 	val |= CTRL2_G_SET_208HZ_MODE;
 	gyro_st_lsm6dsl_write_byte(CTRL2_G_REG, val);
 	
@@ -107,11 +108,17 @@ static void gyro_st_lsm6dsl_setup(void)
 	val |= CTRL7_G_NORMAL_MODE;
 	gyro_st_lsm6dsl_write_byte(CTRL7_G_REG, val);
 	
-	// Power up the Accelerometer
+	// Power up the Accelerometer and set the LPF filter
 	val = gyro_st_lsm6dsl_read_addr(CTRL1_XL_REG);
 	val &= CTRL1_XL_POWERDOWN_MASK;
-	val |= CTRL1_XL_SET_208HZ_MODE;
+	val |= CTRL1_XL_SET_208HZ_MODE | CTRL1_XL_SET_LPF_FILTER;
 	gyro_st_lsm6dsl_write_byte(CTRL1_XL_REG, val);
+	
+	// Set the composite filter
+	val = gyro_st_lsm6dsl_read_addr(CTRL8_XL_REG);
+	val &= CTRL8_XL_MUST_SET_BIT;
+	val |= CTRL8_XL_SET_COMPOSITE_FILTER;
+	gyro_st_lsm6dsl_write_byte(CTRL8_XL_REG, val);
 	
 	// Set the Accelerometer to normal mode available for 208 Hz
 	val = gyro_st_lsm6dsl_read_addr(CTRL6_C_REG);

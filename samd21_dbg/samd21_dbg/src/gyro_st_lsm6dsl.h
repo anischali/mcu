@@ -49,6 +49,7 @@ struct data_t
 #define CTRL1_XL_POWERDOWN_MASK		0x0F
 #define CTRL1_XL_REG				0x10
 #define CTRL1_XL_SET_208HZ_MODE		0x50
+#define CTRL1_XL_SET_LPF_FILTER		0x02
 #define CTRL6_C_REG					0x15
 #define CTRL6_C_NORMAL_MODE			0x10
 #define CTRL6_C_MUST_SET_BIT		0xFB
@@ -60,6 +61,10 @@ struct data_t
 #define CTRL2_G_SET_208HZ_MODE		0x50
 #define CTRL7_G_NORMAL_MODE			0x80
 #define CTRL7_G_MUST_SET_BIT		0xF4
+
+#define CTRL8_XL_REG				0x17
+#define CTRL8_XL_MUST_SET_BIT		0xFD
+#define CTRL8_XL_SET_COMPOSITE_FILTER 0x08
 
 #define CTRL3_C_REG					0x12
 #define CTRL3_C_BDU_ACTIVE_LOW		0x64

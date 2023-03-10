@@ -41,8 +41,8 @@ int main (void)
 	system_init();
 	irq_initialize_vectors();
 	cpu_irq_enable();
-
-	init_usb_cdc();
+	console_init();
+//	init_usb_cdc();
 	spi_initialize(true);
 	spi_write_bytes(msg, sizeof(msg));
 //	pwm_controller_init();

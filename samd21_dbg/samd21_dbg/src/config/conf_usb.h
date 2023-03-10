@@ -139,9 +139,9 @@
 #define UDC_VBUS_EVENT(b_vbus_high) 			vbus_event(b_vbus_high);
 #define  UDI_CDC_ENABLE_EXT(port)				usb_cdc_enable(port)
 #define  UDI_CDC_DISABLE_EXT(port)				usb_cdc_disable(port)
-#define  UDI_CDC_RX_NOTIFY(port)				uart_rx_notify(port)
+#define  UDI_CDC_RX_NOTIFY(port)				//uart_rx_notify(port)
 #define  UDI_CDC_TX_EMPTY_NOTIFY(port)
-#define  UDI_CDC_SET_CODING_EXT(port,cfg)		uart_config(port,cfg)
+#define  UDI_CDC_SET_CODING_EXT(port,cfg)		//uart_config(port,cfg)
 #define  UDI_CDC_SET_DTR_EXT(port,set)
 #define  UDI_CDC_SET_RTS_EXT(port,set)
 

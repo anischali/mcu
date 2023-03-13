@@ -89,7 +89,7 @@ static enum system_interrupt_vector _tcc_interrupt_get_interrupt_vector(
  */
 enum status_code tcc_register_callback(
 		struct tcc_module *const module,
-		tcc_callback_t callback_func,
+		tcc_callback_t callback_func, void *args,
 		const enum tcc_callback callback_type)
 {
 	/* Sanity check arguments */
@@ -98,7 +98,10 @@ enum status_code tcc_register_callback(
 
 	/* Register callback function */
 	module->callback[callback_type] = callback_func;
-
+	
+	/* Set the args */
+	module->args = args;
+	
 	/* Set the bit corresponding to the callback_type */
 	module->register_callback_mask |= _tcc_intflag[callback_type];
 
@@ -123,6 +126,9 @@ enum status_code tcc_unregister_callback(
 
 	/* Unregister callback function */
 	module->callback[callback_type] = NULL;
+
+	/* Clear the args */
+	module->args = NULL;
 
 	/* Clear the bit corresponding to the callback_type */
 	module->register_callback_mask &= ~_tcc_intflag[callback_type];
@@ -227,7 +233,7 @@ void _tcc_interrupt_handler(
 	for (i = 0; i < TCC_CALLBACK_N; i ++) {
 		if (interrupt_and_callback_status_mask & _tcc_intflag[i]) {
 			/* Invoke the registered and enabled callback function */
-			(module->callback[i])(module);
+			(module->callback[i])(module, module->args);
 			/* Clear interrupt flag */
 			module->hw->INTFLAG.reg = _tcc_intflag[i];
 		}

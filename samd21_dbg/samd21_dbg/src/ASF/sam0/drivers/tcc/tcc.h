@@ -1632,7 +1632,7 @@ struct tcc_config {
 struct tcc_module;
 
 /** Type definition for the TCC callback function. */
-typedef void (*tcc_callback_t)(struct tcc_module *const module);
+typedef void (*tcc_callback_t)(struct tcc_module *const module, void *args);
 #endif
 
 /**
@@ -1655,6 +1655,8 @@ struct tcc_module {
 	uint32_t register_callback_mask;
 	/** Bit mask for callbacks enabled */
 	uint32_t enable_callback_mask;
+	/** Interrupt argument */
+	void *args;
 #  endif
 
 	/** Set to \c true to write to buffered registers */

@@ -57,7 +57,7 @@ extern void *_tcc_instances[TCC_INST_NUM];
 
 enum status_code tcc_register_callback(
 		struct tcc_module *const module,
-		tcc_callback_t callback_func,
+		tcc_callback_t callback_func, void *args,
 		const enum tcc_callback callback_type);
 
 enum status_code tcc_unregister_callback(
